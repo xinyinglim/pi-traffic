@@ -23,7 +23,6 @@ def press_pedestrian():
 pedestrian_btn.when_activated = press_pedestrian
 
 while True:
-    global pedestrian_crossing
     green.on()
     sleep(green_duration)
     green.off()
@@ -31,6 +30,7 @@ while True:
     sleep(yellow_duration)
     yellow.off()
     red.on()
+    global pedestrian_crossing
     if pedestrian_crossing:
         print("pedestrian")
         sleep(traffic_to_pedestrian_buffer_duration)
