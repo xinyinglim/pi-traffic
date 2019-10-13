@@ -4,7 +4,7 @@ from time import sleep
 red = LED(4)
 yellow = LED(17)
 green = LED(27)
-pedestrian_green = LED(22)
+pedestrian_blue = LED(22)
 pedestrian_btn = Button(23)
 
 red_duration = 2 #in seconds
@@ -31,16 +31,15 @@ while True:
     sleep(yellow_duration)
     yellow.off()
     red.on()
-    if not pedestrian_crossing:
-        sleep(red_duration)
-    else :  
+    if pedestrian_crossing:
         print("pedestrian")
         sleep(traffic_to_pedestrian_buffer_duration)
-        pedestrian_green.on()
+        pedestrian_blue.on()
         sleep(pedestrian_duration)
-        pedestrian_green.off()
+        pedestrian_blue.off()
         sleep(traffic_to_pedestrian_buffer_duration)
         pedestrian_crossing = False
-        continue
+    else:
+        sleep(red_duration)
     red.off()
 
